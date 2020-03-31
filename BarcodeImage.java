@@ -56,6 +56,21 @@ class BarcodeImage implements Cloneable
 
     public clone()
     {
-        
-    }
+        try
+        {
+            BarcodeImage copy = (BarcodeImage) super.clone();
+            copy.imageData = imageData.clone();
+            
+            for(int i = 0; i < MAX_HEIGHT; i++)
+            {
+                copy.imageData[i] = imageData[i];
+            }
+            
+            return copy;
+        }
+        catch(CloneNotSupportedException e)
+        {
+            return null;
+        }
+     }
 }
